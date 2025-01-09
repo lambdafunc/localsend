@@ -1,11 +1,15 @@
-git reset --hard origin/main
-git pull
+# UNCOMMENT THESE LINES TO BUILD FROM LATEST COMMIT
+# git reset --hard origin/main
+# git pull
+
+cd app
 
 fvm flutter clean
 fvm flutter pub get
-fvm flutter pub run build_runner build -d
 fvm flutter build windows
 
-Compress-Archive -Path build\windows\runner\Release\* -CompressionLevel Fastest -DestinationPath LocalSend-vXXX-windows.zip
+Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath LocalSend-XXX-windows-x86-64.zip
+
+cd ..
 
 Write-Output 'Generated Windows zip!'
